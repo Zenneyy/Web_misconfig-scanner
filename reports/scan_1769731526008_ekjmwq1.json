@@ -1,0 +1,342 @@
+{
+  "id": "scan_1769731526008_ekjmwq1",
+  "targetUrl": "https://securityheaders.com",
+  "status": "completed",
+  "startTime": 1769731526013,
+  "config": {
+    "scanId": "scan_1769731526008_ekjmwq1",
+    "targetUrl": "https://securityheaders.com",
+    "depth": 2,
+    "maxUrls": 50,
+    "timeout": 10000,
+    "skipSensitive": false,
+    "corsReflectiveTest": false
+  },
+  "findings": [
+    {
+      "id": "finding_1769731540330_v2bhxb7",
+      "severity": "LOW",
+      "category": "A02:2025",
+      "cwe": "CWE-693",
+      "cve": [
+        "CVE-2016-1000028"
+      ],
+      "title": "Weak Content-Security-Policy",
+      "description": "CSP allows 'unsafe-inline' without nonces or hashes.",
+      "affectedUrls": [
+        "https://securityheaders.com",
+        "https://securityheaders.com/",
+        "https://securityheaders.com/about/",
+        "https://securityheaders.com/faq/",
+        "https://securityheaders.com/api/",
+        "https://securityheaders.com/api/terms/",
+        "https://securityheaders.com/api/docs/",
+        "https://securityheaders.com/api/manage",
+        "https://securityheaders.com/api"
+      ],
+      "evidence": [
+        {
+          "cspSnippet": "default-src 'self'; script-src 'self' js.stripe.com static.cloudflareinsights.com www.google.com/rec..."
+        },
+        {
+          "cspSnippet": "default-src 'self'; script-src 'self' js.stripe.com static.cloudflareinsights.com www.google.com/rec..."
+        },
+        {
+          "cspSnippet": "default-src 'self'; script-src 'self' js.stripe.com static.cloudflareinsights.com www.google.com/rec..."
+        },
+        {
+          "cspSnippet": "default-src 'self'; script-src 'self' js.stripe.com static.cloudflareinsights.com www.google.com/rec..."
+        },
+        {
+          "cspSnippet": "default-src 'self'; script-src 'self' js.stripe.com static.cloudflareinsights.com www.google.com/rec..."
+        }
+      ],
+      "remediation": "Remove unsafe-inline. Use nonces or hashes for inline scripts.",
+      "timestamp": 1769731540330
+    },
+    {
+      "id": "finding_1769731540330_a4zahpx",
+      "severity": "INFO",
+      "category": "A02:2025",
+      "cwe": "CWE-200",
+      "cve": [
+        "CVE-2017-5638"
+      ],
+      "title": "Server Information Disclosure",
+      "description": "Response headers disclose backend technology details.",
+      "affectedUrls": [
+        "https://securityheaders.com",
+        "https://securityheaders.com/",
+        "https://securityheaders.com/about/",
+        "https://securityheaders.com/faq/",
+        "https://securityheaders.com/api/",
+        "https://securityheaders.com/api/terms/",
+        "https://securityheaders.com/api/docs/",
+        "https://securityheaders.com/cdn-cgi/l/email-protection",
+        "https://securityheaders.com/.well-known/ipv4.txt",
+        "https://securityheaders.com/api/manage",
+        "https://securityheaders.com/api"
+      ],
+      "evidence": [
+        {
+          "server": "cloudflare",
+          "xPoweredBy": "PHP/8.1.32"
+        },
+        {
+          "server": "cloudflare",
+          "xPoweredBy": "PHP/8.1.32"
+        },
+        {
+          "server": "cloudflare",
+          "xPoweredBy": "PHP/8.1.32"
+        },
+        {
+          "server": "cloudflare",
+          "xPoweredBy": "PHP/8.1.32"
+        },
+        {
+          "server": "cloudflare",
+          "xPoweredBy": "PHP/8.1.32"
+        }
+      ],
+      "remediation": "Configure the server/framework to suppress these headers.",
+      "timestamp": 1769731540330
+    },
+    {
+      "id": "finding_1769731540331_mgzzcgs",
+      "severity": "HIGH",
+      "category": "A02:2025",
+      "cwe": "CWE-614",
+      "cve": [
+        "CVE-2017-5782",
+        "CVE-2020-13933"
+      ],
+      "title": "Cookie Missing Secure Flag",
+      "description": "The cookie \"anti_forgery_cookie\" was set over HTTPS without the Secure flag.",
+      "affectedUrls": [
+        "https://securityheaders.com",
+        "https://securityheaders.com/",
+        "https://securityheaders.com/about/",
+        "https://securityheaders.com/faq/",
+        "https://securityheaders.com/api/",
+        "https://securityheaders.com/api/terms/",
+        "https://securityheaders.com/api/docs/",
+        "https://securityheaders.com/api/manage",
+        "https://securityheaders.com/api"
+      ],
+      "evidence": [
+        {
+          "setCookie": "anti_forgery_cookie=8a42cb5631050ea8b7436df88f3941..."
+        },
+        {
+          "setCookie": "anti_forgery_cookie=b17db284bd8a3965f72e383746e843..."
+        },
+        {
+          "setCookie": "anti_forgery_cookie=d80cdc35951f2ddb31ecda75c3051b..."
+        },
+        {
+          "setCookie": "anti_forgery_cookie=bf3bb812e0db9d5a6fa7e5e2a29afa..."
+        },
+        {
+          "setCookie": "anti_forgery_cookie=f2168a4dd0e82282416122e1780fc4..."
+        }
+      ],
+      "remediation": "Add the Secure flag to all cookies sent over HTTPS.",
+      "timestamp": 1769731540331
+    },
+    {
+      "id": "finding_1769731540331_uo7hv2t",
+      "severity": "MEDIUM",
+      "category": "A02:2025",
+      "cwe": "CWE-1004",
+      "cve": [
+        "CVE-2021-25036",
+        "CVE-2020-11022"
+      ],
+      "title": "Cookie Missing HttpOnly Flag",
+      "description": "The cookie \"anti_forgery_cookie\" is accessible via JavaScript (XSS risk).",
+      "affectedUrls": [
+        "https://securityheaders.com",
+        "https://securityheaders.com/",
+        "https://securityheaders.com/about/",
+        "https://securityheaders.com/faq/",
+        "https://securityheaders.com/api/",
+        "https://securityheaders.com/api/terms/",
+        "https://securityheaders.com/api/docs/",
+        "https://securityheaders.com/api/manage",
+        "https://securityheaders.com/api"
+      ],
+      "evidence": [
+        {
+          "setCookie": "anti_forgery_cookie=8a42cb5631050ea8b7436df88f3941..."
+        },
+        {
+          "setCookie": "anti_forgery_cookie=b17db284bd8a3965f72e383746e843..."
+        },
+        {
+          "setCookie": "anti_forgery_cookie=d80cdc35951f2ddb31ecda75c3051b..."
+        },
+        {
+          "setCookie": "anti_forgery_cookie=bf3bb812e0db9d5a6fa7e5e2a29afa..."
+        },
+        {
+          "setCookie": "anti_forgery_cookie=f2168a4dd0e82282416122e1780fc4..."
+        }
+      ],
+      "remediation": "Add the HttpOnly flag to session cookies to prevent theft via XSS.",
+      "timestamp": 1769731540331
+    },
+    {
+      "id": "finding_1769731541199_168fol0",
+      "severity": "HIGH",
+      "category": "A02:2025",
+      "cwe": "CWE-319",
+      "cve": [
+        "CVE-2023-32762",
+        "CVE-2017-5782"
+      ],
+      "title": "Missing HSTS Header",
+      "description": "The site is served over HTTPS but does not enforce it via Strict-Transport-Security.",
+      "affectedUrls": [
+        "https://securityheaders.com/cdn-cgi/l/email-protection"
+      ],
+      "evidence": {
+        "header": "strict-transport-security",
+        "present": false
+      },
+      "remediation": "Set Strict-Transport-Security: max-age=31536000; includeSubDomains.",
+      "timestamp": 1769731541199
+    },
+    {
+      "id": "finding_1769731541199_csmcw7i",
+      "severity": "MEDIUM",
+      "category": "A02:2025",
+      "cwe": "CWE-693",
+      "cve": [
+        "CVE-2021-25036",
+        "CVE-2020-11022"
+      ],
+      "title": "Missing Content-Security-Policy",
+      "description": "No CSP header is present, increasing vulnerability to Cross-Site Scripting (XSS).",
+      "affectedUrls": [
+        "https://securityheaders.com/cdn-cgi/l/email-protection",
+        "https://securityheaders.com/.well-known/ipv4.txt"
+      ],
+      "evidence": [
+        {
+          "header": "content-security-policy",
+          "present": false
+        },
+        {
+          "header": "content-security-policy",
+          "present": false
+        }
+      ],
+      "remediation": "Implement a strict CSP to restrict resource loading.",
+      "timestamp": 1769731541199
+    },
+    {
+      "id": "finding_1769731541199_iq2221p",
+      "severity": "LOW",
+      "category": "A02:2025",
+      "cwe": "CWE-693",
+      "cve": [
+        "CVE-2018-1000861"
+      ],
+      "title": "Missing Referrer-Policy",
+      "description": "Controls how much referrer information is included with requests.",
+      "affectedUrls": [
+        "https://securityheaders.com/cdn-cgi/l/email-protection",
+        "https://securityheaders.com/.well-known/ipv4.txt"
+      ],
+      "evidence": [
+        {
+          "header": "referrer-policy",
+          "present": false
+        },
+        {
+          "header": "referrer-policy",
+          "present": false
+        }
+      ],
+      "remediation": "Set Referrer-Policy: strict-origin-when-cross-origin",
+      "timestamp": 1769731541199
+    },
+    {
+      "id": "finding_1769731541199_zee41k9",
+      "severity": "INFO",
+      "category": "A02:2025",
+      "cwe": "CWE-693",
+      "cve": [],
+      "title": "Missing Permissions-Policy",
+      "description": "Allows site to restrict browser features (camera, mic, geolocation).",
+      "affectedUrls": [
+        "https://securityheaders.com/cdn-cgi/l/email-protection",
+        "https://securityheaders.com/.well-known/ipv4.txt"
+      ],
+      "evidence": [
+        {
+          "header": "permissions-policy",
+          "present": false
+        },
+        {
+          "header": "permissions-policy",
+          "present": false
+        }
+      ],
+      "remediation": "Set Permissions-Policy header to disable unused features.",
+      "timestamp": 1769731541199
+    },
+    {
+      "id": "finding_1769731541257_3o38bte",
+      "severity": "MEDIUM",
+      "category": "A02:2025",
+      "cwe": "CWE-1021",
+      "cve": [
+        "CVE-2022-3260",
+        "CVE-2018-17192"
+      ],
+      "title": "Missing Clickjacking Protection",
+      "description": "Neither X-Frame-Options nor CSP frame-ancestors is set.",
+      "affectedUrls": [
+        "https://securityheaders.com/.well-known/ipv4.txt"
+      ],
+      "evidence": {
+        "xFrameOptions": "missing",
+        "cspFrameAncestors": "missing"
+      },
+      "remediation": "Set X-Frame-Options: DENY or configure CSP frame-ancestors.",
+      "timestamp": 1769731541257
+    },
+    {
+      "id": "finding_1769731541257_muegbma",
+      "severity": "LOW",
+      "category": "A02:2025",
+      "cwe": "CWE-693",
+      "cve": [
+        "CVE-2024-43445",
+        "CVE-2020-11023"
+      ],
+      "title": "Missing or Weak X-Content-Type-Options",
+      "description": "Header is missing or not set to \"nosniff\", risking MIME confusion attacks.",
+      "affectedUrls": [
+        "https://securityheaders.com/.well-known/ipv4.txt"
+      ],
+      "evidence": {
+        "header": "x-content-type-options",
+        "value": "missing"
+      },
+      "remediation": "Set X-Content-Type-Options: nosniff",
+      "timestamp": 1769731541257
+    }
+  ],
+  "message": "Scan finished successfully.",
+  "endTime": 1769731541576,
+  "overallRisk": "HIGH",
+  "summary": {
+    "totalFindings": 10,
+    "urlsScanned": 11,
+    "duration": 15562
+  },
+  "errors": []
+}
