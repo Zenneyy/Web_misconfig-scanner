@@ -1,0 +1,227 @@
+/* Cybersecurity Scanner - Dark SOC Theme */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core dark theme */
+    --background: 220 20% 6%;
+    --foreground: 210 20% 92%;
+
+    --card: 220 18% 10%;
+    --card-foreground: 210 20% 92%;
+
+    --popover: 220 18% 10%;
+    --popover-foreground: 210 20% 92%;
+
+    /* Cyan accent - primary */
+    --primary: 185 85% 50%;
+    --primary-foreground: 220 20% 6%;
+
+    /* Secondary - subtle dark */
+    --secondary: 220 15% 15%;
+    --secondary-foreground: 210 20% 85%;
+
+    /* Muted surfaces */
+    --muted: 220 15% 12%;
+    --muted-foreground: 215 15% 55%;
+
+    /* Accent - cyber glow */
+    --accent: 185 70% 40%;
+    --accent-foreground: 210 20% 98%;
+
+    /* Severity Colors */
+    --severity-critical: 0 85% 55%;
+    --severity-critical-foreground: 0 0% 100%;
+    --severity-high: 25 95% 55%;
+    --severity-high-foreground: 0 0% 100%;
+    --severity-medium: 45 95% 50%;
+    --severity-medium-foreground: 220 20% 6%;
+    --severity-low: 145 60% 45%;
+    --severity-low-foreground: 0 0% 100%;
+    --severity-info: 210 80% 55%;
+    --severity-info-foreground: 0 0% 100%;
+
+    /* Status Colors */
+    --status-running: 185 85% 50%;
+    --status-completed: 145 60% 45%;
+    --status-failed: 0 85% 55%;
+    --status-pending: 45 95% 50%;
+
+    /* Destructive */
+    --destructive: 0 85% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders and inputs */
+    --border: 220 15% 18%;
+    --input: 220 15% 15%;
+    --ring: 185 85% 50%;
+
+    --radius: 0.5rem;
+
+    /* Sidebar */
+    --sidebar-background: 220 20% 8%;
+    --sidebar-foreground: 210 20% 85%;
+    --sidebar-primary: 185 85% 50%;
+    --sidebar-primary-foreground: 220 20% 6%;
+    --sidebar-accent: 220 15% 15%;
+    --sidebar-accent-foreground: 210 20% 92%;
+    --sidebar-border: 220 15% 15%;
+    --sidebar-ring: 185 85% 50%;
+
+    /* Custom gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(185 85% 50%), hsl(200 80% 45%));
+    --gradient-card: linear-gradient(180deg, hsl(220 18% 12%), hsl(220 18% 8%));
+    --gradient-glow: radial-gradient(ellipse at top, hsl(185 85% 50% / 0.15), transparent 50%);
+    
+    /* Shadows */
+    --shadow-glow: 0 0 20px hsl(185 85% 50% / 0.2);
+    --shadow-card: 0 4px 20px hsl(0 0% 0% / 0.4);
+  }
+
+  /* Force dark mode only */
+  .dark {
+    --background: 220 20% 6%;
+    --foreground: 210 20% 92%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply dark;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Mono font for code/data */
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground));
+  }
+}
+
+@layer components {
+  /* Glow effects */
+  .glow-primary {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3), 0 0 40px hsl(var(--primary) / 0.1);
+  }
+
+  .glow-critical {
+    box-shadow: 0 0 15px hsl(var(--severity-critical) / 0.4);
+  }
+
+  .glow-high {
+    box-shadow: 0 0 15px hsl(var(--severity-high) / 0.4);
+  }
+
+  /* Scan pulse animation */
+  @keyframes scan-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .animate-scan-pulse {
+    animation: scan-pulse 1.5s ease-in-out infinite;
+  }
+
+  /* Terminal-style blink */
+  @keyframes terminal-blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  .animate-terminal-blink {
+    animation: terminal-blink 1s step-end infinite;
+  }
+
+  /* Gradient border */
+  .border-gradient {
+    position: relative;
+    background: hsl(var(--card));
+    border-radius: var(--radius);
+  }
+
+  .border-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: var(--radius);
+    background: var(--gradient-primary);
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* Severity badge styles */
+  .severity-critical {
+    @apply bg-[hsl(var(--severity-critical))] text-[hsl(var(--severity-critical-foreground))];
+  }
+
+  .severity-high {
+    @apply bg-[hsl(var(--severity-high))] text-[hsl(var(--severity-high-foreground))];
+  }
+
+  .severity-medium {
+    @apply bg-[hsl(var(--severity-medium))] text-[hsl(var(--severity-medium-foreground))];
+  }
+
+  .severity-low {
+    @apply bg-[hsl(var(--severity-low))] text-[hsl(var(--severity-low-foreground))];
+  }
+
+  .severity-info {
+    @apply bg-[hsl(var(--severity-info))] text-[hsl(var(--severity-info-foreground))];
+  }
+}
+
+@layer utilities {
+  /* Text gradient */
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Card with glow on hover */
+  .card-hover-glow {
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+
+  .card-hover-glow:hover {
+    box-shadow: var(--shadow-glow);
+    border-color: hsl(var(--primary) / 0.3);
+  }
+}
