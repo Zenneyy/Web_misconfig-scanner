@@ -1,0 +1,39 @@
+{
+  "name": "web-misconfig-scanner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "node src/api/server.js",
+    "dev": "node src/api/server.js",
+    "test": "node test/checks.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KhalilAbdulKarim/ALP-CS5.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/KhalilAbdulKarim/ALP-CS5/issues"
+  },
+  "homepage": "https://github.com/KhalilAbdulKarim/ALP-CS5#readme",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "cheerio": "^1.1.2",
+    "cors": "^2.8.5",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.2.1",
+    "helmet": "^8.1.0",
+    "ipaddr.js": "^2.3.0",
+    "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
